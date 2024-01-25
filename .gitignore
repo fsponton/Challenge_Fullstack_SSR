@@ -1,0 +1,33 @@
+
+# Dependency directories
+*/node_modules/*
+*/node_modules/.prisma/client/schema.prisma
+
+# dotenv environment variables file
+*/.env
+*/.env.test
+
+# package-lock.json
+*/package-lock.json
+
+
+# Logs
+*/logs
+*.log
+npm-debug.log*
+
+node_modules
+*/dist
+*/dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

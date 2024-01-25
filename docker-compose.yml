@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  api:
+    container_name: api
+    restart: always
+    build: ./api
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network 
+ 
+  client:
+    container_name: client
+    restart: always
+    build: ./client
+    ports:
+      - "8080:8080"
+    networks:
+      - my_network 
+
+networks:
+  my_network:
+    driver: bridge

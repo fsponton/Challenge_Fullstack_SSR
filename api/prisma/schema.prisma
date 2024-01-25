@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URI")
+}
+
+
+model User {
+    id Int @id @unique @default(autoincrement()) //UUID
+    email String @unique
+    full_name String
+    password String 
+    role   Role 
+    playersMatches PlayersMatch[]
+}
+
+enum Role {
+    ADMIN
+    PLAYER
+    CONSULTANT
+}
+
+model PlayersMatch {
+    id_player  Int
+    player   User @relation(fields: [id_player], references: [id])
+    id_match    Int
+    match Matches @relation(fields: [id_match], references: [id])
+
+    @@id([id_match, id_player])
+}
+
+model Matches {
+    id Int @id @unique @default(autoincrement()) //UUID
+    start_date  String
+    end_date    String
+    id_win  Int
+    id_loss Int
+    countEnvidos    Int 
+    countWinEnvidos Int
+    countFlowers Int
+    countWinFlowers Int
+
+    playersMatches PlayersMatch[] 
+}
