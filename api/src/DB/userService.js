@@ -15,7 +15,7 @@ class UserService extends BaseService {
             const user = await prisma.user.findUnique({ where: { email } });
 
             if (!user) {
-                throw new UserError('User not found', 404);
+                throw new UserError('Invalid email or password', 401);
             }
 
             const encryptedPassword = await bcrypt.compare(password, user.password);
