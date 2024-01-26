@@ -6,6 +6,7 @@ import addMatch from '../services/addMatch.js';
 import getAllMatches from "../services/getAllMatches.js";
 import { MatchesContext } from "../contexts/matches-context.jsx";
 import { useContext } from "react";
+import formatDate from "../helpers/formateDate.js";
 
 const AddMatchForm = () => {
     const navigate = useNavigate()
@@ -15,8 +16,8 @@ const AddMatchForm = () => {
         <Formik initialValues={{
             playerWin: '',
             playerLoss: '',
-            startDate: '',
-            endDate: '',
+            startDate: formatDate(new Date),
+            endDate: formatDate(new Date),
             countEnvidos: 0,
             countWinEnvidos: 0,
             countFlowers: 0,

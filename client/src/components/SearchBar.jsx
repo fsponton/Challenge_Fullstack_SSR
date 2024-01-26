@@ -28,7 +28,7 @@ const SearchBar = () => {
                         title: 'Match added successfully',
                         text: `${result.message}`
                     });
-                    setMatches(result.data)
+                    setMatches(result.data.wins.concat(result.data.loss))
                     navigate('/dashboard');
                 } else {
                     Swal.fire({

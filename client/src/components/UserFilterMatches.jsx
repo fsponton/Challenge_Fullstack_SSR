@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { filterMatchesSchema } from '../utils/_yupSchemas/filterMatchesSchema';
+import { userFilterMatchesSchema } from '../utils/_yupSchemas/userFilterMatchesSchema';
 import Swal from 'sweetalert2';
 import userSearchByDate from '../services/userSearchByDate';
 import { useNavigate } from 'react-router';
@@ -19,7 +19,7 @@ const UserFilterMatches = () => {
                 startDate: formatDate(new Date()),
                 endDate: formatDate(new Date())
             }}
-            validationSchema={filterMatchesSchema}
+            validationSchema={userFilterMatchesSchema}
             onSubmit={async (values) => {
                 const form = {
                     email: userData.email,
@@ -45,19 +45,17 @@ const UserFilterMatches = () => {
                 }
             }}
         >
-            <Form className="">
+            <Form >
                 <label className="me-2">
                     Start Date:
                     <Field className="form-control" type="date" name="startDate" />
                     <ErrorMessage name="startDate" component="div" className="text-danger" />
-
                 </label>
                 <label className="me-2">
                     End Date:
                     <Field className="form-control" type="date" name="endDate" />
                     <ErrorMessage name="endDate" component="div" className="text-danger" />
                 </label>
-
                 <button className="btn btn-primary" type="submit">
                     Search
                 </button>
