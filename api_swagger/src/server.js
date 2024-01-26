@@ -1,10 +1,10 @@
 import express from "express"
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from "./config/swagger.js";
 
 export const server = express();
-import routerUsers from "./routes/routerUsers.js"
-import routerMatches from "./routes/routerMatches.js";
 
 // middlewares
 server.use(express.json());
@@ -20,8 +20,7 @@ server.use((_req, res, next) => {
 });
 
 //routes
-server.use('/users', routerUsers);
-server.use('/matches', routerMatches)
+server.use('/api_docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 server.use((error, _req, res, _next) => {
     console.log('ERROR en server:', error)
