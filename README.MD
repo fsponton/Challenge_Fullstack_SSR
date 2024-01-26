@@ -104,8 +104,8 @@ Tambien es necesario hacer un cambio en el archivo de configuracion de postgreSQ
 -> abrir el archivo "pg_hba.conf" ubicado en C:\Program Files\PostgreSQL\16\data
 
 -> Ir hasta abajo y cambiar la direccion:
-```
 
+```
 # IPv4 local connections:
 host    all             all             "192.168.1.5/32"            scram-sha-256  
 ```

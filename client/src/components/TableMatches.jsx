@@ -7,7 +7,7 @@ const TableMatches = () => {
     const { matches } = useContext(MatchesContext)
 
     return (
-        <div className="overflow-auto" style={{ maxHeight: "500px" }}>
+        <div className="overflow-auto" style={{ maxHeight: "830px" }}>
             <table className="table table-hover">
                 <thead className="table-dark position-sticky top-0">
                     <tr>
