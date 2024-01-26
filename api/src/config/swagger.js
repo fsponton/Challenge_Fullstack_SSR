@@ -1,5 +1,5 @@
 import swaggerJSDoc from "swagger-jsdoc"
-import { requests } from "./routes/workoutRoutes.js";
+import { requests } from "../routes/v1_swagger/workoutRoutes.js";
 
 const options = {
     definition: {

@@ -3,7 +3,7 @@ const requests = (key) => {
         '/users/login/': {
             post: {
                 summary: 'Iniciar sesión',
-                description: 'Endpoint para iniciar sesión y obtener un token de acceso.',
+                description: 'Endpoint para iniciar sesión y obtener token de acceso.',
                 requestBody: {
                     required: true,
                     content: {
@@ -139,7 +139,7 @@ const requests = (key) => {
                 description: 'Endpoint para obtener matches, necesario token',
                 responses: {
                     '200': {
-                        description: 'Inicio de sesión exitoso',
+                        description: 'Obtencion de todos los matches ok',
                         content: {
                             'application/json': {
                                 example: {
@@ -167,7 +167,7 @@ const requests = (key) => {
         },
         '/matches/bydate': {
             get: {
-                summary: 'Obtener todos los matches segun date',
+                summary: 'Obtener todos los matches segun rango de fecha',
                 description: 'Endpoint para obtener matches en un rango de fecha, necesario token',
                 parameters: [
                     {

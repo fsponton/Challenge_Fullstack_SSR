@@ -2,7 +2,7 @@ import express from "express"
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpec from "./swagger.js";
+import swaggerSpec from "./config/swagger.js";
 
 export const server = express();
 import routerUsers from "./routes/routerUsers.js"
