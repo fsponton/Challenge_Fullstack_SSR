@@ -54,7 +54,6 @@ _Deberiamos ver algo asi, pero con nuestras IP's_
   ➜  Local:   http://localhost:8080/
   ➜  Network: http://192.168.56.1:8080/
   ➜  Network: http://192.168.1.5:8080/
-  ➜  Network: http://172.17.192.1:8080/
 ```
 
 # Paso 7
@@ -62,9 +61,9 @@ _Para poder hacer acciones, es necesario loguearse y para eso es necesario crear
 
 _Nos dirigimos al directorio /api y ejecutamos el comando "npx prisma studio"_
 
-Nos va a abrir en el browser el cliente de PRISMA para ver las tablas de las entidades, de esta manera ingresaremos el primer usuario admin que nos permitira manejar la app.
+Nos va a abrir en el browser el cliente de PRISMA donde podemos ver las tablas de las entidades, de esta manera ingresaremos el primer usuario de tipo admin que nos permitira manejar la app.
 
-la ruta del cliente es "http:localhost:5555"
+la ruta del cliente es "http://localhost:5555"
 
 _Elegimos la tabla User_
 
@@ -81,12 +80,14 @@ role: ADMIN
 # PASO 8
 Revisamos que en el terminal de /api este corriendo la api y revisamos que en /client este corriendo el cliente
 
-Con esto ya podemos ingresar al sistema mediante el link "http:localhost:8080".
+Con esto ya podemos ingresar al sistema mediante el link "http://localhost:8080".
 
-Los datos del primer usuario admin son:
+Los datos del usuario admin creados son:
 
+```
 email: admin@gmail.com
 password: Hola123.
+```
 
 # El sistema permite las siguientes acciones
 
@@ -106,9 +107,9 @@ USUARIOS PLAYER
 
 
 # PAS0 9
-_Si queremos ver swagger tenemos que ingresar al link "http:localhost:3000/api_docs"_
+_Si queremos ver swagger tenemos que ingresar al link "http://localhost:3000/api_docs"_
 
-Todas las acciones, nos van a pedir el toker, asi que una vez logueado y devuelto el token podemos ingresarlo arriba en la autorizacion y dejarlo logueado para las siguientes request's
+Todas las acciones, nos van a pedir el token, asi que una vez logueado y devuelto el token podemos ingresarlo arriba en la autorizacion y dejarlo logueado para las siguientes request's
 
 
 # PASO 10
@@ -116,14 +117,13 @@ _Arrancar con docker_
 
 Para ello es necesario tener instalado docker, como se menciono en los requisitos y tener instalada la extension de docker en visual studio.
 
-/CHALLENGE_FULSTACK_SSR (carpeta general), tiene el docker-compose.yml configurado
+/Challenge_Fullstack_SSR (carpeta general), tiene el docker-compose.yml configurado
 /api / client -> tienen sus DockerFile con sus instrucciones dentro.
 
 
-Estando en /CHALLENGE_FULLSTACK_SSR ejecutamos el comando "docker-compose up", este comando crea las imagenes automaticamente con las configuraciones de los DockerFiles y levanta el sistema. 
+Estando en /Challenge_Fullstack_SSR ejecutamos el comando "docker-compose up", este comando crea las imagenes automaticamente con las configuraciones de los DockerFiles y levanta la api y el cliente dentro del contendor. 
 
-Una vez levantado el sistema se puede ingresar a la app mediante el link http:localhost:8080
-
+Una vez levantado el sistema se puede ingresar a la web app mediante el link "http://localhost:8080"
 
 # Paso 11
 
