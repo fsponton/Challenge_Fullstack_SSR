@@ -1,10 +1,12 @@
 # APP TRUCO TOURNAMENT
 
-REQUISITOS:
+### REQUISITOS 👇🏻
 
-- PostgreSQL instalado
-- NODE version 18 instalado
-- Docker instalado
+- PostgreSQL      ➡︎ instalado
+- NODE version 18 ➡︎ instalado
+- Docker          ➡︎ instalado
+
+### PASOS PARA CORRER LA APP 👇🏻
 
 ### Paso 1
 _Crear base de datos en POSGRESQL_
@@ -14,21 +16,17 @@ Abrir pgadmin4, click derecho crear una nueva DB con nombre "truco_tournament"
 ```
 
 ### Paso 2
-_Una vez creada la base de datos, abrir un terminal de visual studio y moverse a la carpeta /api/prisma/_
+_Abrir terminal y moverse a la carpeta /api/prisma/_
 
 ```
 Estando en /api/prisma ejecutar el comando: "npx prisma migrate dev --name init" 
 ```
 
 ### Paso 3
-_Moverse al directorio /api e instalar las dependencias con el siguiente comando_
-
-```
-npm i
-```
+_Ir al directorio /api e instalar las dependencias con el siguiente comando "npm i"_
 
 ### Paso 4
-_Si todo esta ok, ejecutamos el comando "npm run dev" y deberia levantar el servidor en el puerto :3000_
+_Ejecutar el comando "npm run dev" para levantar el servidor en el puerto :3000_
 
 ```
 [nodemon] 3.0.3
@@ -40,34 +38,25 @@ API listening on port: 3000
 ```
 
 ### Paso 5
-
-_Moverse al directorio /client  e instalar las dependencias con el comando "npm i"_
+_Moverse al directorio /client e instalar las dependencias con el comando "npm i"_
 
 ### Paso 6
-_Levantar el cliente con el comando "npm run dev"_
-
-_Deberiamos ver algo asi, pero con nuestras IP's_
+_Levantar el cliente con el comando "npm run dev". Deberiamos ver algo asi:_
 
 ```
-  VITE v5.0.12  ready in 1059 ms
+  VITE v{x.y.z}  ready in {x} ms
 
   ➜  Local:   http://localhost:8080/
-  ➜  Network: http://192.168.56.1:8080/
-  ➜  Network: http://192.168.1.5:8080/
+  ➜  Network: http://{IP local}:8080/
+  ➜  Network: http://{IP local}:8080/
 ```
 
-# Paso 7
-_Para poder hacer acciones, es necesario loguearse y para eso es necesario crear a mano un usuario admin. Como no se puede desde de la app porque inicia sin datos, lo vamos a crear a mano_
-
-_Nos dirigimos al directorio /api y ejecutamos el comando "npx prisma studio"_
-
-Nos va a abrir en el browser el cliente de PRISMA donde podemos ver las tablas de las entidades, de esta manera ingresaremos el primer usuario de tipo admin que nos permitira manejar la app.
-
-la ruta del cliente es "http://localhost:5555"
-
+### Paso 7
+_Ir al directorio /api y ejecutar el comando "npx prisma studio"_
+_En el cliente de PRISMA, ingresar el primer usuario de tipo admin, el cual nos permitirá manejar la app_
+_La ruta del cliente es "http://localhost:5555"_
 _Elegimos la tabla User_
-
-Y cargamos los siguientes datos:
+_Y cargamos los siguientes datos:_
 
 ```
 full_name: admin
@@ -76,20 +65,17 @@ password: $2a$10$cVDN4I4eLPuVwmWmwzcmXuiO9M3PC208QTmWCRMdFUxgs4e384Lgq
 role: ADMIN
 ```
 
-
-# PASO 8
-Revisamos que en el terminal de /api este corriendo la api y revisamos que en /client este corriendo el cliente
-
-Con esto ya podemos ingresar al sistema mediante el link "http://localhost:8080".
-
-Los datos del usuario admin creados son:
+### Paso 8
+_Chequear que en el terminal de /api este corriendo la api y que en /client este corriendo el cliente_
+_Ingresar al sistema mediante el link "http://localhost:8080"_
+_Los datos del usuario admin son:_
 
 ```
 email: admin@gmail.com
 password: Hola123.
 ```
 
-# El sistema permite las siguientes acciones
+# El sistema permite las siguientes acciones 👇🏻
 
 USUARIOS ADMIN
 - Agregar Matchs
@@ -105,28 +91,22 @@ USUARIOS PLAYER
 - Ver todos sus partidos, con estadisticas de total, wins y loss
 - Filtrar por fecha
 
+### Paso 9
+_Abrir Swagger ingresando a: "http://localhost:3000/api_docs"_
+_Todas las acciones nos van a pedir el token, asi que una vez logueado y devuelto el token, podemos ingresarlo arriba en la autorizacion y dejarlo para las siguientes request's_
 
-# PAS0 9
-_Si queremos ver swagger tenemos que ingresar al link "http://localhost:3000/api_docs"_
+### Paso 10
+_Arrancar con Docker_
+_Para ello es necesario tener instalado Docker y la extension del mismo en visual studio_
 
-Todas las acciones, nos van a pedir el token, asi que una vez logueado y devuelto el token podemos ingresarlo arriba en la autorizacion y dejarlo logueado para las siguientes request's
-
-
-# PASO 10
-_Arrancar con docker_
-
-Para ello es necesario tener instalado docker, como se menciono en los requisitos y tener instalada la extension de docker en visual studio.
-
+```
 /Challenge_Fullstack_SSR (carpeta general), tiene el docker-compose.yml configurado
 /api / client -> tienen sus DockerFile con sus instrucciones dentro.
+```
 
+_Ir a /Challenge_Fullstack_SSR y ejecutar el comando "docker-compose up" para crear las imagenes con las configuraciones de los DockerFiles, levantar la api y el cliente_
+_Ingresar a la web app mediante el link "http://localhost:8080"_
 
-Estando en /Challenge_Fullstack_SSR ejecutamos el comando "docker-compose up", este comando crea las imagenes automaticamente con las configuraciones de los DockerFiles y levanta la api y el cliente dentro del contendor. 
-
-Una vez levantado el sistema se puede ingresar a la web app mediante el link "http://localhost:8080"
-
-# Paso 11
-
-Con la aplicacion corriendo en docker ya podemos ingresar con cualquier tipo de perfil, Filtrar, cargar usuarios, partidos. Tambien podemos ver swagger con el link "http://localhost:3000/api_docs"
-
-
+### Paso 11
+_Ya podemos ingresar con cualquier tipo de perfil, filtrar, cargar usuarios y partidos_
+_Tambien podemos ver swagger con el link "http://localhost:3000/api_docs"_
