@@ -80,12 +80,12 @@ password: Hola123.
 USUARIOS ADMIN
 - Agregar Matchs
 - Agregar Usuarios 
-- Filtrar por fecha y usuario
-- Filtrar por usuario
+- Filtrar por fecha y usuario, ver estadisticas total, win y loss
+- Filtrar por usuario, ver estadisticas total, win y loss
 
 USUARIOS CONSULTANT
-- Filtrar por fecha y usuario
-- Filtrar por usuario
+- Filtrar por fecha y usuario, ver estadisticas total, win y loss
+- Filtrar por usuario, ver estadisticas total, win y loss
 
 USUARIOS PLAYER
 - Ver todos sus partidos, con estadisticas de total, wins y loss
