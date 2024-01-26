@@ -5,7 +5,7 @@ const options = {
     definition: {
         openapi: "3.0.1",
         info: {
-            title: "Postgress + Prisma ORM + Node.JS + Express",
+            title: "PostgreSQL + Prisma ORM + Node.JS + Express",
             version: "1.0.0"
         },
         components: {
@@ -33,10 +33,13 @@ const options = {
 
 let swaggerSpec = swaggerJSDoc(options);
 
-swaggerSpec.paths['/users/login/'] = requests('/users/login/')
-swaggerSpec.paths['/users/register/'] = requests('/users/register/')
-swaggerSpec.paths['/matches/'] = requests('/matches/')
+swaggerSpec.paths['/users/login'] = requests('/users/login/')
+swaggerSpec.paths['/users/register'] = requests('/users/register/')
+swaggerSpec.paths['/matches'] = requests('/matches/')
 swaggerSpec.paths['/matches/bydate'] = requests('/matches/bydate')
+swaggerSpec.paths['/matches/bydateanduser'] = requests('/matches/bydateanduser')
+swaggerSpec.paths['/matches/register'] = requests('/matches/register')
+
 
 
 export default swaggerSpec;

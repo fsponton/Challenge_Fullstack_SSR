@@ -59,7 +59,25 @@ class MatchesService extends BaseService {
 
     async findByDateAndUser({ startDate, endDate, userID }) {
         try {
-            const result = await prisma.matches.findMany({
+
+            const lossMatches = await prisma.matches.findMany({
+                where: {
+                    start_date: {
+                        gte: startDate,
+                    },
+                    end_date: {
+                        lte: endDate,
+                    },
+                    id_loss: userID,
+                    playersMatches: {
+                        some: {
+                            id_player: userID,
+                        },
+                    },
+                }
+            })
+
+            const winMatches = await prisma.matches.findMany({
                 where: {
                     start_date: {
                         gte: startDate,
@@ -75,7 +93,10 @@ class MatchesService extends BaseService {
                     },
                 }
             })
+
+            const result = lossMatches.concat(winMatches)
             if (!result) { throw new NotFoundError(`The matches in range date: ${startDate} - ${endDate} doesn't exist`, 404) }
+
             return result
         } catch (error) {
             throw new DatabaseError(`Error retrieving matches, ${error.message}`);

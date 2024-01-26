@@ -186,7 +186,7 @@ const requests = (key) => {
                 ],
                 responses: {
                     '200': {
-                        description: 'Inicio de sesión exitoso',
+                        description: 'OK',
                         content: {
                             'application/json': {
                                 example: {
@@ -211,12 +211,151 @@ const requests = (key) => {
                     },
                 },
             },
+        },
+        '/matches/bydateanduser': {
+            get: {
+                summary: 'Obtener todos los matches de un usuario segun rango de fecha',
+                description: 'Endpoint para obtener  matches de un usuario en un rango de fecha, necesario token',
+                parameters: [
+                    {
+                        name: 'startDate',
+                        in: 'query',
+                        required: true,
+                        type: 'string',
+                        description: 'Start Date'
+                    }, {
+                        name: 'endDate',
+                        in: 'query',
+                        required: true,
+                        type: 'string',
+                        description: 'End Date'
+                    }, {
+                        name: 'emailUser',
+                        in: 'query',
+                        required: true,
+                        type: 'string',
+                        description: 'Email User'
+                    }
+                ],
+                responses: {
+                    '200': {
+                        description: 'OK',
+                        content: {
+                            'application/json': {
+                                example: {
+                                    status: 'Success',
+                                    message: `Matches by user: emailUser within a given date range`,
+                                    data: 'Array of matches of user',
+                                },
+                            },
+                        },
+                    },
+                    '401': {
+                        description: 'Credenciales inválidas',
+                        content: {
+                            'application/json': {
+                                example: {
+                                    error: true,
+                                    errorName: "TokenError",
+                                    message: "Token has invalid or expired"
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+        '/matches/register': {
+            post: {
+                summary: 'Registro de match',
+                description: 'Endpoint para registrar un match, necesario token.',
+                requestBody: {
+                    required: true,
+                    content: {
+                        'application/json': {
+                            schema: {
+                                type: 'object',
+                                properties: {
+                                    playerWin: {
+                                        type: 'string',
+                                        example: 'jugador1@gmail.com'
+                                    },
+                                    playerLoss: {
+                                        type: 'string',
+                                        example: 'jugador99@gmail.com'
+                                    },
+                                    start_date: {
+                                        type: 'string',
+                                        example: '1998-01-24'
+                                    },
+                                    end_date: {
+                                        type: 'string',
+                                        example: '1999-01-24'
+                                    },
+                                    countEnvidos: {
+                                        type: 'number',
+                                        example: '8'
+                                    },
+                                    countWinEnvidos: {
+                                        type: 'number',
+                                        example: '6'
+                                    },
+                                    countFlowers: {
+                                        type: 'number',
+                                        example: '3'
+                                    },
+                                    countWinFlowers: {
+                                        type: 'number',
+                                        example: '2'
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+                responses: {
+                    '200': {
+                        description: 'Match Added',
+                        content: {
+                            'application/json': {
+                                example: {
+                                    status: "Success",
+                                    message: `Se registro con exito el partido con id`
+                                },
+                            },
+                        },
+                    },
+                    '401': {
+                        description: 'Credenciales inválidas',
+                        content: {
+                            'application/json': {
+                                example: {
+                                    error: true,
+                                    errorName: "tokenError",
+                                    message: "Invalid authorization"
+                                },
+                            },
+                        },
+                    },
+                    '400': {
+                        description: 'Error request',
+                        content: {
+                            'application/json': {
+                                example: {
+                                    error: true,
+                                    errorName: "UserError",
+                                    message: "Bad Request: the email dosen't exists"
+                                },
+                            },
+                        },
+                    },
+                },
+            },
         }
-    }
 
+    }
     return request[key]
 }
-
 
 
 export {
