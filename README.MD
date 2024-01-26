@@ -99,6 +99,16 @@ Todas las acciones nos van a pedir el token, asi que una vez logueado y devuelto
 Arrancar con Docker
 Para ello es necesario tener instalado Docker y la extension del mismo en visual studio
 
+Tambien es necesario hacer un cambio en el archivo de configuracion de postgreSQL, asi cuando se ejecute el comando de docker-compose up no haya problema con el comando automatico que se ejecuta de prisma "npx prisma migrate dev --name init". El nombre del error es "P1010"
+
+-> abrir el archivo "pg_hba.conf" ubicado en C:\Program Files\PostgreSQL\16\data
+
+-> Ir hasta abajo y cambiar la direccion:
+```
+
+# IPv4 local connections:
+host    all             all             "192.168.1.5/32"            scram-sha-256  
+```
 
 /Challenge_Fullstack_SSR (carpeta general), tiene el docker-compose.yml configurado
 /api / client -> tienen sus DockerFile con sus instrucciones dentro
