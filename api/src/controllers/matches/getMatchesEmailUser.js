@@ -16,5 +16,5 @@ export default async (req, res) => {
     const result = { wins, loss }
 
     return res.status(200)
-        .send({ status: "Success", message: `matches by user: ${emailUser} within a given date range`, data: result })
+        .send({ status: "Success", message: `matches by user: ${emailUser} `, data: result })
 }
