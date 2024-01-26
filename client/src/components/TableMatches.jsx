@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import { PlayersContext } from "../contexts/players-context";
+import { MatchesContext } from "../contexts/matches-context";
 
-const TableMatches = ({ matches }) => {
+const TableMatches = () => {
     const { players } = useContext(PlayersContext)
+    const { matches } = useContext(MatchesContext)
+
     return (
         <div className="overflow-auto" style={{ maxHeight: "500px" }}>
             <table className="table table-hover">
@@ -21,27 +24,25 @@ const TableMatches = ({ matches }) => {
                         <th scope="col">Count Win Flowers</th>
                     </tr>
                 </thead>
-                <tbody id="tbody">
+                <tbody id="tbody" >
                     {matches && matches.map((match) => {
                         const playerWin = players.find(player => player.id === match.id_win);
                         const playerLoss = players.find(player => player.id === match.id_loss);
-                        return <>
+                        return (
                             <tr key={match.id}>
                                 <td># {match.id}</td>
-                                <td style={{ background: 'green' }}>{match.id_win}</td>
-                                <td style={{ background: 'green' }}>{playerWin.email}</td>
-                                <td style={{ background: 'red' }}>{match.id_loss}</td>
-                                <td style={{ background: 'red' }}>{playerLoss.email}</td>
+                                <td style={{ background: '#77dd77' }}>{match.id_win}</td>
+                                <td style={{ background: '#77dd77' }}>{playerWin.email}</td>
+                                <td style={{ background: '#ff6961' }}>{match.id_loss}</td>
+                                <td style={{ background: '#ff6961' }}>{playerLoss.email}</td>
                                 <td>{match.start_date}</td>
                                 <td>{match.end_date}</td>
                                 <td>{match.countEnvidos}</td>
                                 <td>{match.countFlowers}</td>
                                 <td>{match.countWinEnvidos}</td>
                                 <td>{match.countWinFlowers}</td>
-                            </tr>
-                        </>
-                    }
-                    )}
+                            </tr>)
+                    })}
                 </tbody>
             </table>
         </div>

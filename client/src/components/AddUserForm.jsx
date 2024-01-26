@@ -6,7 +6,6 @@ import userSchema from '../utils/_yupSchemas/userSchema';
 
 const AddUserForm = () => {
     const navigate = useNavigate();
-
     return (
         <Formik
             initialValues={{
@@ -16,7 +15,7 @@ const AddUserForm = () => {
                 role: '',
             }}
             validationSchema={userSchema}
-            onSubmit={async (values) => {
+            onSubmit={async (values, { resetForm }) => {
                 const form = {
                     full_name: values.full_name,
                     email: values.email,
@@ -31,6 +30,7 @@ const AddUserForm = () => {
                         title: `User ${form.email} added `,
                         text: `${result.message}`,
                     });
+                    resetForm()
                     navigate('/dashboard')
                 } else {
                     Swal.fire({
@@ -44,7 +44,7 @@ const AddUserForm = () => {
         >
             <Form style={{ background: '#000', padding: '20px', borderRadius: '8px', color: '#fff' }}>
                 <label>
-                    Nombre completo:
+                    Full name:
                     <Field className="form-control" type="text" name="full_name" />
                     <ErrorMessage name="full_name" component="div" className="text-danger" />
                 </label>
@@ -56,16 +56,16 @@ const AddUserForm = () => {
                 </label>
                 <br />
                 <label>
-                    Contraseña:
+                    PAssword:
                     <Field className="form-control" type="password" name="password" />
                     <ErrorMessage name="password" component="div" className="text-danger" />
                 </label>
                 <br />
                 <label>
-                    Rol:
+                    Role:
                     <Field className="form-control" as="select" name="role">
                         <option value="" disabled>
-                            Rol
+                            Role
                         </option>
                         <option value="PLAYER">Player</option>
                         <option value="ADMIN">Admin</option>

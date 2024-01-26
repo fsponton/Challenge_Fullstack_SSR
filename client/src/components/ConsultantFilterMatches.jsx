@@ -6,11 +6,13 @@ import { MatchesContext } from '../contexts/matches-context';
 import { useContext } from 'react';
 import searchByDate from '../services/searchByDate';
 import formatDate from '../helpers/formateDate';
-
+import { UserFilteredContext } from '../contexts/user-filtered-context';
+import searchPlayerMatches from '../services/searchPlayerMatches';
 
 const ConsultantFilterMatches = () => {
     const navigate = useNavigate()
     const { setMatches } = useContext(MatchesContext)
+    const { setUserFiltered } = useContext(UserFilteredContext)
 
     return (
         <Formik
@@ -28,12 +30,14 @@ const ConsultantFilterMatches = () => {
                 }
                 const token = sessionStorage.getItem('session')
                 const result = await searchByDate({ form, token })
+                const result2 = await searchPlayerMatches({ form, token })
                 if (result.status === "Success") {
                     Swal.fire({
                         icon: 'success',
                         title: 'Matches filtered',
                         text: `${result.message}`
                     });
+                    setUserFiltered(result2.data)
                     setMatches(result.data)
                     navigate('/dashboard');
                 } else {
@@ -63,7 +67,6 @@ const ConsultantFilterMatches = () => {
                     name="email"
                 />
                 <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
-
                 <button className="btn btn-primary " type="submit">
                     Search
                 </button>

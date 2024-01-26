@@ -10,12 +10,12 @@ const AdminConsultantActions = () => {
     const [showAddMatchForm, setShowAddMatchForm] = useState(false);
     const [showAddUserForm, setShowAddUserForm] = useState(false)
 
-    const handleAgregarUsuario = () => {
+    const handlerAddUser = () => {
         setShowAddUserForm(!showAddUserForm)
         setShowAddMatchForm(false)
     };
 
-    const handleAgregarPartido = () => {
+    const handlerAddMatch = () => {
         setShowAddMatchForm(!showAddMatchForm)
         setShowAddUserForm(false)
     };
@@ -27,13 +27,13 @@ const AdminConsultantActions = () => {
             {userData.role === 'ADMIN' ? (
                 <>
                     <li className="nav-item m-2">
-                        <button className="btn btn-primary " onClick={handleAgregarUsuario}>
+                        <button className="btn btn-primary " onClick={handlerAddUser}>
                             Add User
                         </button>
                     </li>
                     {showAddUserForm && <AddUserForm />}
                     <li className="nav-item m-2">
-                        <button className="btn btn-primary" onClick={handleAgregarPartido}>
+                        <button className="btn btn-primary" onClick={handlerAddMatch}>
                             Add Match
                         </button>
                     </li>

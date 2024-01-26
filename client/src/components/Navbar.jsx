@@ -3,29 +3,19 @@ import { useNavigate } from "react-router";
 import UserFilterMatches from "./UserFilterMatches";
 import { useContext } from "react";
 import { MatchesContext } from "../contexts/matches-context";
+import winMatches from "../helpers/winMatches";
+import lossMatches from "../helpers/lossMatches";
+import { UserFilteredContext } from "../contexts/user-filtered-context";
 
 const Navbar = ({ userData }) => {
     const navigate = useNavigate()
     const { matches } = useContext(MatchesContext)
+    const { userFiltered } = useContext(UserFilteredContext)
 
     const logout = () => {
         sessionStorage.removeItem('session');
         navigate("/")
     }
-
-
-
-    const winMatches = (matchs, idJugador) => {
-        return matchs.reduce((totalWins, match) => {
-            return totalWins + (match.id_win === idJugador ? 1 : 0);
-        }, 0);
-    };
-
-    const lossMatches = (matchs, idJugador) => {
-        return matchs.reduce((totalWins, match) => {
-            return totalWins + (match.id_loss === idJugador ? 1 : 0);
-        }, 0);
-    };
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,18 +24,24 @@ const Navbar = ({ userData }) => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <span className="nav-link m-1" style={{ backgroundColor: 'yellow', color: 'black' }}>Total Matches: {matches.length}</span>
+                            <span className="nav-link m-1" style={{ backgroundColor: '#fdfd96', color: 'black' }}>Total Matches: {matches.length}</span>
                         </li>
-                        {userData.role === 'PLAYER' ?
-                            <>
-                                <li className="nav-item">
-                                    <span className="nav-link m-1" style={{ backgroundColor: 'yellow', color: 'black' }}>Matches Win: {winMatches(matches, userData.id)}</span>
-                                </li>
-                                <li className="nav-item">
-                                    <span className="nav-link m-1" style={{ backgroundColor: 'yellow', color: 'black' }}>Matches Loss: {lossMatches(matches, userData.id)}</span>
-                                </li>
-                            </>
-                            : null}
+                        <>
+                            <li className="nav-item">
+                                <span className="nav-link m-1" style={{ backgroundColor: '#fdfd96', color: 'black' }}>Matches Win: {
+                                    !userFiltered ?
+                                        winMatches(matches, userData.id)
+                                        : winMatches(matches, userFiltered.userID)
+                                }</span>
+                            </li>
+                            <li className="nav-item">
+                                <span className="nav-link m-1" style={{ backgroundColor: '#fdfd96', color: 'black' }}>Matches Loss: {
+                                    !userFiltered ?
+                                        lossMatches(matches, userData.id)
+                                        : lossMatches(matches, userFiltered.userID)
+                                }</span>
+                            </li>
+                        </>
                         <li className="nav-item">
                             <span className="nav-link m-1" style={{ backgroundColor: '#000', color: '#fff' }}>User ID: {userData.id}</span>
                         </li>

@@ -24,7 +24,7 @@ const AddMatchForm = () => {
             countWinFlowers: 0
         }}
             validationSchema={matchSchema}
-            onSubmit={async values => {
+            onSubmit={async (values, { resetForm }) => {
                 const form = {
                     playerWin: values.playerWin,
                     playerLoss: values.playerLoss,
@@ -45,6 +45,7 @@ const AddMatchForm = () => {
                     });
                     const response = await getAllMatches({ token })
                     setMatches(response.data)
+                    resetForm();
                     navigate('/dashboard')
                     return
                 } else {
@@ -57,12 +58,12 @@ const AddMatchForm = () => {
             }}>
             <Form style={{ background: '#000', padding: '20px', borderRadius: '8px', color: '#fff' }}>
                 <label className="m-2">
-                    Player Win Email:
+                    Email Player Win:
                     <Field className="form-control" type="text" name="playerWin" />
                     <ErrorMessage name="playerWin" component="div" className="text-danger" />
                 </label>
                 <label>
-                    Player Loss Email:
+                    Email Player Loss:
                     <Field className="form-control" type="text" name="playerLoss" />
                     <ErrorMessage name="playerLoss" component="div" className="text-danger" />
                 </label>

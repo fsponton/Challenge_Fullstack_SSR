@@ -13,7 +13,7 @@ export default async (req, res) => {
 
     const loss = await matchesService.findLossByIDUser({ id: parseInt(userID) })
 
-    const result = { wins, loss }
+    const result = { wins, loss, userID }
 
     return res.status(200)
         .send({ status: "Success", message: `matches by user: ${emailUser} `, data: result })

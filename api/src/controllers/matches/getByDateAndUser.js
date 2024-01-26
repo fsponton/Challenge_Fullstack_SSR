@@ -9,7 +9,9 @@ export default async (req, res) => {
 
     const userID = await userService.findByEmail({ email: emailUser })
 
-    const result = await matchesService.findByDateAndUser({ startDate, endDate, userID })
+    let result = await matchesService.findByDateAndUser({ startDate, endDate, userID })
+
+    result.userID = userID
 
     return res.status(200)
         .send({ status: "Success", message: `Matches by user ID: ${userID} between: ${startDate} - ${endDate} `, data: result })

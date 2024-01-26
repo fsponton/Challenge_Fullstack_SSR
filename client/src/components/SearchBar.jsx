@@ -5,10 +5,12 @@ import searchPlayerMatches from '../services/searchPlayerMatches';
 import { useNavigate } from 'react-router';
 import { MatchesContext } from '../contexts/matches-context';
 import { useContext } from 'react';
+import { UserFilteredContext } from '../contexts/user-filtered-context';
 
 const SearchBar = () => {
     const navigate = useNavigate()
     const { setMatches } = useContext(MatchesContext)
+    const { setUserFiltered } = useContext(UserFilteredContext)
 
     return (
         <Formik
@@ -28,6 +30,7 @@ const SearchBar = () => {
                         title: 'Match added successfully',
                         text: `${result.message}`
                     });
+                    setUserFiltered(result.data)
                     setMatches(result.data.wins.concat(result.data.loss))
                     navigate('/dashboard');
                 } else {

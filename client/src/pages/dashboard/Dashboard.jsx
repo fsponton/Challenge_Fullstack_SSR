@@ -82,7 +82,7 @@ const Dashboard = () => {
                                     data-testid="sync"
                                 />
                             </div>
-                            : <TableMatches matches={matches} />
+                            : <TableMatches />
                         }
                     </div>
                 </div >
