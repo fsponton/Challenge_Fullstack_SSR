@@ -11,7 +11,7 @@ routerUsers.post("/register", verifyToken, verifyRoleAdmin, registerValidator, r
 routerUsers.post("/login", loginValidator, loginUser)
 
 //consultant or admin
-routerUsers.get("/", verifyToken, verifyRoleAdminAndConsultant, getAll)
+routerUsers.get("/", verifyToken, getAll)
 
 
 

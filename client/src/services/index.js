@@ -7,6 +7,7 @@ import getByRankingService from "./getByRanking"
 import searchByDateService from "./searchByDate"
 import searchPlayerMatchesService from "./searchPlayerMatches"
 import userSearchByDateService from "./userSearchByDate"
+import getAllPlayersService from "./getAllPlayers"
 
 export const login = loginService
 export const addMatch = addMatchService
@@ -17,4 +18,5 @@ export const getByRanking = getByRankingService
 export const searchByDate = searchByDateService
 export const searchPlayerMatches = searchPlayerMatchesService
 export const userSearchByDate = userSearchByDateService
+export const getAllPlayers = getAllPlayersService
 

@@ -1,14 +1,16 @@
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import jwt_decode from "jwt-decode"
-import { getMatches, getAllMatches } from "../../services/index.js"
+import { getMatches, getAllMatches, getAllPlayers } from "../../services/index.js"
 import TableMatches from "../../components/TableMatches";
 import Navbar from "../../components/Navbar";
 import { UserContext } from "../../contexts/user-context";
 import { LoadingContext } from "../../contexts/loading-context";
 import { MatchesContext } from "../../contexts/matches-context";
+import { PlayersContext } from "../../contexts/players-context.jsx";
 import Swal from "sweetalert2";
 import SyncLoader from "react-spinners/SyncLoader";
+
 
 
 const Dashboard = () => {
@@ -17,6 +19,7 @@ const Dashboard = () => {
     const { userData, setUserData } = useContext(UserContext)
     const { matches, setMatches } = useContext(MatchesContext)
     const { loading, setLoading } = useContext(LoadingContext)
+    const { setPlayers } = useContext(PlayersContext)
 
 
     useEffect(() => {
@@ -29,6 +32,8 @@ const Dashboard = () => {
             setUserData(userData)
             try {
                 setLoading(true);
+                const players = await getAllPlayers({ token })
+                setPlayers(players)
                 if (userData.role === 'PLAYER') {
                     const result = await getMatches({ email: userData.email, token })
                     setMatches(result.data.wins.concat(result.data.loss))
@@ -77,7 +82,7 @@ const Dashboard = () => {
                                     data-testid="sync"
                                 />
                             </div>
-                            : <TableMatches data={matches} />
+                            : <TableMatches matches={matches} />
                         }
                     </div>
                 </div >

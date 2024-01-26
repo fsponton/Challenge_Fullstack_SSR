@@ -57,8 +57,8 @@ const Navbar = ({ userData }) => {
                         </li>
                         {userData.role === 'PLAYER' ? < UserFilterMatches /> : null}
                         {userData.role === 'ADMIN' || userData.role === 'CONSULTANT' ? < AdminConsultantActions /> : null}
-                        <li className="nav-item">
-                            <button className="btn btn-danger m-1" onClick={logout}>Logout</button>
+                        <li className="nav-item m-2">
+                            <button className="btn btn-danger " onClick={logout}>Logout</button>
                         </li>
                     </ul>
                 </div>
