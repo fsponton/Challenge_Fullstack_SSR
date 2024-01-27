@@ -9,6 +9,15 @@ services:
       - "3000:3000"
     networks:
       - my_network 
+
+  api_swagger:
+    container_name: api_swagger
+    restart: always
+    build: ./api_swagger
+    ports:
+      - "4000:4000"
+    networks:
+      - my_network 
  
   client:
     container_name: client

@@ -39,5 +39,5 @@ swaggerSpec.paths['/matches'] = requests('/matches/')
 swaggerSpec.paths['/matches/bydate'] = requests('/matches/bydate')
 swaggerSpec.paths['/matches/bydateanduser'] = requests('/matches/bydateanduser')
 swaggerSpec.paths['/matches/register'] = requests('/matches/register')
-console.log(swaggerSpec.paths)
+
 export default swaggerSpec;
