@@ -16,12 +16,12 @@ const ModalAddMatch = ({ modal, openCloseModal }) => {
                 },
                 content: {
                     position: 'absolute',
-                    top: '15%',
-                    left: '15%',
-                    right: '15%',
+                    top: '20%',
+                    left: '30%',
+                    right: '30%',
                     bottom: 'auto',
-                    border: '1px solid #000',
-                    background: '#fff',
+                    border: '#000',
+                    background: '#000',
                     overflow: 'auto',
                     WebkitOverflowScrolling: 'touch',
                     borderRadius: '4px',
@@ -37,16 +37,12 @@ const ModalAddMatch = ({ modal, openCloseModal }) => {
         >
             <div className='row'>
                 <div className='col d-flex justify-content-between '>
-                    <h2>Add Match</h2>
+                    <h2 className="text-white">Add Match</h2>
                     <button className='btn btn-danger' name="addMatch" onClick={openCloseModal}>x</button>
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col col-lg-12 d-flex justify-content-center " >
-                    <AddMatchForm />
-                </div>
-            </div>
+            <AddMatchForm />
 
         </Modal >
     )

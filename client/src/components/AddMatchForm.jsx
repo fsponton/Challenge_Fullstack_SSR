@@ -13,6 +13,7 @@ const AddMatchForm = () => {
     const { setMatches } = useContext(MatchesContext)
 
     return (
+
         <Formik initialValues={{
             playerWin: '',
             playerLoss: '',
@@ -57,53 +58,51 @@ const AddMatchForm = () => {
                 }
             }}>
             <Form style={{ background: '#000', padding: '20px', borderRadius: '8px', color: '#fff' }}>
-                <label className="m-2">
-                    Email Player Win:
-                    <Field className="form-control" type="text" name="playerWin" />
-                    <ErrorMessage name="playerWin" component="div" className="text-danger" />
-                </label>
-                <label>
-                    Email Player Loss:
-                    <Field className="form-control" type="text" name="playerLoss" />
-                    <ErrorMessage name="playerLoss" component="div" className="text-danger" />
-                </label>
-                <br />
-                <label className="m-2">
-                    Start Date:
-                    <Field className="form-control" type="date" name="startDate" />
-                    <ErrorMessage name="startDate" component="div" className="text-danger" />
-                </label>
-                <label>
-                    End Date:
-                    <Field className="form-control" type="date" name="endDate" />
-                    <ErrorMessage name="endDate" component="div" className="text-danger" />
-                </label>
-                <br />
-                <label className="m-2">
-                    Count Envidos:
-                    <Field className="form-control" type="number" name="countEnvidos" />
-                    <ErrorMessage name="countEnvidos" component="div" className="text-danger" />
-                </label>
-                <label>
-                    Count Win Envidos:
-                    <Field className="form-control" type="number" name="countWinEnvidos" />
-                    <ErrorMessage name="countWinEnvidos" component="div" className="text-danger" />
-                </label>
-                <br />
-                <label className="m-2">
-                    Count Flowers:
-                    <Field className="form-control" type="number" name="countFlowers" />
-                    <ErrorMessage name="countFlowers" component="div" className="text-danger" />
-                </label>
-                <label>
-                    Count Win Flowers:
-                    <Field className="form-control" type="number" name="countWinFlowers" />
-                    <ErrorMessage name="countWinFlowers" component="div" className="text-danger" />
-                </label>
-                <br />
-                <button className="btn btn-success btn-block w-100" type="submit">Agregar Partida</button>
+                <div className="row">
+                    <label className="col-6">
+                        Email Player Win:
+                        <Field className="form-control" type="text" name="playerWin" />
+                        <ErrorMessage name="playerWin" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        Email Player Loss:
+                        <Field className="form-control" type="text" name="playerLoss" />
+                        <ErrorMessage name="playerLoss" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        Start Date:
+                        <Field className="form-control" type="date" name="startDate" />
+                        <ErrorMessage name="startDate" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        End Date:
+                        <Field className="form-control" type="date" name="endDate" />
+                        <ErrorMessage name="endDate" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        Count Envidos:
+                        <Field className="form-control" type="number" name="countEnvidos" />
+                        <ErrorMessage name="countEnvidos" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        Count Win Envidos:
+                        <Field className="form-control" type="number" name="countWinEnvidos" />
+                        <ErrorMessage name="countWinEnvidos" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        Count Flowers:
+                        <Field className="form-control" type="number" name="countFlowers" />
+                        <ErrorMessage name="countFlowers" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        Count Win Flowers:
+                        <Field className="form-control" type="number" name="countWinFlowers" />
+                        <ErrorMessage name="countWinFlowers" component="div" className="text-danger" />
+                    </label>
+                </div>
+                <button className="btn btn-success btn-block mt-2 w-100" type="submit">Submit</button>
             </Form>
-        </Formik>
+        </Formik >
     );
 };
 

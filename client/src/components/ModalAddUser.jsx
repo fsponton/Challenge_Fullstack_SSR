@@ -12,16 +12,16 @@ const ModalAddUSer = ({ modal, openCloseModal }) => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)'
                 },
                 content: {
                     position: 'absolute',
-                    top: '15%',
-                    left: '15%',
-                    right: '15%',
+                    top: '25%',
+                    left: '37%',
+                    right: '37%',
                     bottom: 'auto',
-                    border: '1px solid #000',
-                    background: '#fff',
+                    border: '#000',
+                    background: '#000',
                     overflow: 'auto',
                     WebkitOverflowScrolling: 'touch',
                     borderRadius: '4px',
@@ -32,12 +32,11 @@ const ModalAddUSer = ({ modal, openCloseModal }) => {
             ariaHideApp={false}
             isOpen={modal.addUser}
             onRequestClose={openCloseModal}
-            className=""
             contentLabel="Modal Add User"
         >
             <div className='row'>
                 <div className='col d-flex justify-content-between '>
-                    <h2 >Add User</h2>
+                    <h2 className="text-white">Add User</h2>
                     <button className='btn btn-danger' name="addUser" onClick={openCloseModal}>x</button>
                 </div>
             </div>

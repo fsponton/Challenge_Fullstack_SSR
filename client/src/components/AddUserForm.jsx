@@ -43,28 +43,25 @@ const AddUserForm = () => {
             }
         >
             <Form style={{ background: '#000', padding: '20px', borderRadius: '8px', color: '#fff' }}>
-                <label>
+                <label className='col-12 m-1'>
                     Full name:
                     <Field className="form-control" type="text" name="full_name" />
                     <ErrorMessage name="full_name" component="div" className="text-danger" />
                 </label>
-                <br />
-                <label>
+                <label className='col-12 m-1'>
                     Email:
                     <Field className="form-control" type="text" name="email" />
                     <ErrorMessage name="email" component="div" className="text-danger" />
                 </label>
-                <br />
-                <label>
-                    PAssword:
+                <label className='col-12 m-1'>
+                    Password:
                     <Field className="form-control" type="password" name="password" />
                     <ErrorMessage name="password" component="div" className="text-danger" />
                 </label>
-                <br />
-                <label>
+                <label className='col-12 m-1'>
                     Role:
                     <Field className="form-control" as="select" name="role">
-                        <option value="" disabled>
+                        <option value="" disabled  >
                             Role
                         </option>
                         <option value="PLAYER">Player</option>
@@ -73,8 +70,7 @@ const AddUserForm = () => {
                     </Field>
                     <ErrorMessage name="role" component="div" className="text-danger" />
                 </label>
-                <br />
-                <button className="btn btn-success btn-block w-100" type="submit">Agregar Usuario</button>
+                <button className="btn btn-success btn-block w-100 m-1 mt-3" type="submit">Submit</button>
             </Form>
         </Formik >
     );
