@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const matchSchema = Yup.object().shape({
+const addMatchSchema = Yup.object().shape({
     playerWin: Yup.string()
         .email('Ingrese una dirección de correo electrónico válida')
         .required('El jugador ganador es requerido'),
@@ -18,4 +18,4 @@ const matchSchema = Yup.object().shape({
     countWinFlowers: Yup.number().integer().required('Ingrese un número válido'),
 });
 
-export default matchSchema;
+export default addMatchSchema;

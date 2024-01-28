@@ -1,8 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import addUser from '../services/addUser';
+import addUser from '../../services/addUser';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import userSchema from '../utils/_yupSchemas/userSchema';
+import addUserSchema from '../../utils/_yupSchemas/addUserSchema';
 
 const AddUserForm = () => {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ const AddUserForm = () => {
                 password: '',
                 role: '',
             }}
-            validationSchema={userSchema}
+            validationSchema={addUserSchema}
             onSubmit={async (values, { resetForm }) => {
                 const form = {
                     full_name: values.full_name,
@@ -62,7 +62,7 @@ const AddUserForm = () => {
                     Role:
                     <Field className="form-control" as="select" name="role">
                         <option value="" disabled  >
-                            Role
+                            Select..
                         </option>
                         <option value="PLAYER">Player</option>
                         <option value="ADMIN">Admin</option>
@@ -70,7 +70,7 @@ const AddUserForm = () => {
                     </Field>
                     <ErrorMessage name="role" component="div" className="text-danger" />
                 </label>
-                <button className="btn btn-success btn-block w-100 m-1 mt-3" type="submit">Submit</button>
+                <button className="btn btn-success btn-block w-100 m-1 mt-4" type="submit">Submit</button>
             </Form>
         </Formik >
     );

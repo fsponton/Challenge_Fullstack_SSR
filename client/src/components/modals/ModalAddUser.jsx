@@ -1,5 +1,5 @@
 import Modal from "react-modal"
-import AddUserForm from "./AddUserForm"
+import AddUserForm from "../forms/AddUserForm"
 
 
 const ModalAddUSer = ({ modal, openCloseModal }) => {
@@ -40,13 +40,7 @@ const ModalAddUSer = ({ modal, openCloseModal }) => {
                     <button className='btn btn-danger' name="addUser" onClick={openCloseModal}>x</button>
                 </div>
             </div>
-
-            <div className="row">
-                <div className="col col-lg-12 d-flex justify-content-center " >
-                    <AddUserForm />
-                </div>
-            </div>
-
+            <AddUserForm />
         </Modal >
     )
 }

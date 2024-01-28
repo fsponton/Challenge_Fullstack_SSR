@@ -1,11 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { searchSchema } from '../utils/_yupSchemas/searchSchema';
+import { searchSchema } from '../../utils/_yupSchemas/searchSchema';
 import Swal from 'sweetalert2';
-import searchPlayerMatches from '../services/searchPlayerMatches';
+import searchPlayerMatches from '../../services/searchPlayerMatches';
 import { useNavigate } from 'react-router';
-import { MatchesContext } from '../contexts/matches-context';
+import { MatchesContext } from '../../contexts/matches-context';
 import { useContext } from 'react';
-import { UserFilteredContext } from '../contexts/user-filtered-context';
+import { UserFilteredContext } from '../../contexts/user-filtered-context';
 
 const SearchBar = () => {
     const navigate = useNavigate()
@@ -42,17 +42,21 @@ const SearchBar = () => {
                 }
             }}
         >
-            <Form className=" d-flex" style={{ backgroundColor: "black", color: "#fff", padding: '5px' }}>
-                <Field
-                    className='form-control me-2'
-                    type="text"
-                    placeholder="Search by email"
-                    name="email"
-                />
-                <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
-                <button className="btn btn-primary" type="submit">
-                    Search
-                </button>
+            <Form className="row p-2" style={{ backgroundColor: "black", color: "#fff" }}>
+                <div className='col-8 d-flex justify-content-center align-items-center'>
+                    <Field
+                        className='form-control'
+                        type="text"
+                        placeholder="Search by email"
+                        name="email"
+                    />
+                    <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+                </div>
+                <div className="col-3 d-flex justify-content-center align-items-center">
+                    <button className="btn btn-primary " type="submit">
+                        Search
+                    </button>
+                </div>
             </Form>
         </Formik>
     );

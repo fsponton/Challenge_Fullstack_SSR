@@ -1,5 +1,5 @@
 import Modal from "react-modal"
-import AddMatchForm from "./AddMatchForm";
+import AddMatchForm from "../forms/AddMatchForm";
 
 
 const ModalAddMatch = ({ modal, openCloseModal }) => {
@@ -12,7 +12,7 @@ const ModalAddMatch = ({ modal, openCloseModal }) => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                    backgroundColor: 'rgba(000, 000, 000, 0.5)'
                 },
                 content: {
                     position: 'absolute',
@@ -41,9 +41,7 @@ const ModalAddMatch = ({ modal, openCloseModal }) => {
                     <button className='btn btn-danger' name="addMatch" onClick={openCloseModal}>x</button>
                 </div>
             </div>
-
             <AddMatchForm />
-
         </Modal >
     )
 }

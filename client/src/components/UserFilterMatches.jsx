@@ -45,7 +45,7 @@ const UserFilterMatches = () => {
                 }
             }}
         >
-            <Form >
+            <Form>
                 <label className="me-2">
                     Start Date:
                     <Field className="form-control" type="date" name="startDate" />

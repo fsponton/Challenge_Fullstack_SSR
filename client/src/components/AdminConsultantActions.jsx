@@ -1,12 +1,9 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../contexts/user-context';
-// import AddMatchForm from './AddMatchForm';
-// import AddUserForm from './AddUserForm';
-import SearchBar from './SearchBar';
-import ConsultantFilterMatches from './ConsultantFilterMatches';
-import ModalAddUSer from './modalAddUser';
-import ModalAddMatch from './ModalAddMatch';
-
+import SearchBar from './forms/SearchBar';
+import ModalAddUSer from './modals/ModalAddUser';
+import ModalAddMatch from './modals/ModalAddMatch';
+import ModalFilterByDate from './modals/ModalFilterByDate';
 
 
 const AdminConsultantActions = () => {
@@ -15,7 +12,8 @@ const AdminConsultantActions = () => {
 
     const [modal, setIsOpen] = useState({
         addUser: false,
-        addMatch: false
+        addMatch: false,
+        filterByDate: false
     })
 
     const openCloseModal = (e) => {
@@ -28,7 +26,7 @@ const AdminConsultantActions = () => {
 
     return (
         <>
-            <ConsultantFilterMatches />
+
             <SearchBar />
             {userData.role === 'ADMIN' ? (
                 <>
@@ -42,8 +40,15 @@ const AdminConsultantActions = () => {
                             Add Match
                         </button>
                     </li>
+                    <li className="nav-item m-2">
+                        <button className="btn btn-primary" name="filterByDate" onClick={(e) => openCloseModal(e)}>
+                            Filter
+                            By Date
+                        </button>
+                    </li>
                 </>
             ) : null}
+            <ModalFilterByDate modal={modal} openCloseModal={openCloseModal} />
             <ModalAddUSer modal={modal} openCloseModal={openCloseModal} />
             <ModalAddMatch modal={modal} openCloseModal={openCloseModal} />
         </>

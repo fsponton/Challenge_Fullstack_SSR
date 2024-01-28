@@ -72,7 +72,7 @@ const Dashboard = () => {
             <div className="justify-content-center">
                 {userData === null ? <></> : <Navbar userData={userData} />}
                 <div className="vh-100 d-flex flex-column align-items-center " style={{ margin: '0', padding: '0', overflow: 'hidden' }}>
-                    <div className='col-md-12' style={{ background: '#999' }}>
+                    <div className='col-md-12' style={{ background: '#000' }}>
                         {loading ?
                             <div style={{ margin: "20rem" }} className="">
                                 <SyncLoader

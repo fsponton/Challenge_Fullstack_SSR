@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Swal from 'sweetalert2';
-import matchSchema from "../utils/_yupSchemas/matchSchema.js"
-import addMatch from '../services/addMatch.js';
-import getAllMatches from "../services/getAllMatches.js";
-import { MatchesContext } from "../contexts/matches-context.jsx";
+import addMatchSchema from "../../utils/_yupSchemas/addMatchSchema.js"
+import addMatch from '../../services/addMatch.js';
+import getAllMatches from "../../services/getAllMatches.js";
+import { MatchesContext } from "../../contexts/matches-context.jsx";
 import { useContext } from "react";
-import formatDate from "../helpers/formateDate.js";
+import formatDate from "../../helpers/formateDate.js";
 
 const AddMatchForm = () => {
     const navigate = useNavigate()
@@ -24,7 +24,7 @@ const AddMatchForm = () => {
             countFlowers: 0,
             countWinFlowers: 0
         }}
-            validationSchema={matchSchema}
+            validationSchema={addMatchSchema}
             onSubmit={async (values, { resetForm }) => {
                 const form = {
                     playerWin: values.playerWin,
@@ -100,7 +100,7 @@ const AddMatchForm = () => {
                         <ErrorMessage name="countWinFlowers" component="div" className="text-danger" />
                     </label>
                 </div>
-                <button className="btn btn-success btn-block mt-2 w-100" type="submit">Submit</button>
+                <button className="btn btn-success btn-block mt-4 w-100" type="submit">Submit</button>
             </Form>
         </Formik >
     );
