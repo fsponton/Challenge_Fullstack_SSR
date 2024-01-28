@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import addUserSchema from '../../utils/_yupSchemas/addUserSchema';
 
-const AddUserForm = () => {
+const AddUserForm = ({ closeModal }) => {
     const navigate = useNavigate();
     return (
         <Formik
@@ -31,6 +31,7 @@ const AddUserForm = () => {
                         text: `${result.message}`,
                     });
                     resetForm()
+                    closeModal()
                     navigate('/dashboard')
                 } else {
                     Swal.fire({

@@ -2,7 +2,7 @@ import Modal from "react-modal"
 import AddMatchForm from "../forms/AddMatchForm";
 
 
-const ModalAddMatch = ({ modal, openCloseModal }) => {
+const ModalAddMatch = ({ modal, closeModal }) => {
     return (
         <Modal
             style={{
@@ -31,17 +31,17 @@ const ModalAddMatch = ({ modal, openCloseModal }) => {
             }}
             ariaHideApp={false}
             isOpen={modal.addMatch}
-            onRequestClose={openCloseModal}
+            onRequestClose={closeModal}
             className=""
             contentLabel="Modal Add Match"
         >
             <div className='row'>
                 <div className='col d-flex justify-content-between '>
                     <h2 className="text-white">Add Match</h2>
-                    <button className='btn btn-danger' name="addMatch" onClick={openCloseModal}>x</button>
+                    <button className='btn btn-danger' name="addMatch" onClick={closeModal}>x</button>
                 </div>
             </div>
-            <AddMatchForm />
+            <AddMatchForm closeModal={closeModal} />
         </Modal >
     )
 }

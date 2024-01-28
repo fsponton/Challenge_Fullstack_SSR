@@ -2,7 +2,7 @@ import Modal from "react-modal"
 import AddUserForm from "../forms/AddUserForm"
 
 
-const ModalAddUSer = ({ modal, openCloseModal }) => {
+const ModalAddUSer = ({ modal, closeModal }) => {
     return (
         <Modal
             style={{
@@ -31,16 +31,16 @@ const ModalAddUSer = ({ modal, openCloseModal }) => {
             }}
             ariaHideApp={false}
             isOpen={modal.addUser}
-            onRequestClose={openCloseModal}
+            onRequestClose={closeModal}
             contentLabel="Modal Add User"
         >
             <div className='row'>
                 <div className='col d-flex justify-content-between '>
                     <h2 className="text-white">Add User</h2>
-                    <button className='btn btn-danger' name="addUser" onClick={openCloseModal}>x</button>
+                    <button className='btn btn-danger' name="addUser" onClick={closeModal}>x</button>
                 </div>
             </div>
-            <AddUserForm />
+            <AddUserForm closeModal={closeModal} />
         </Modal >
     )
 }

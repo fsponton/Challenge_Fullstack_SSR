@@ -1,7 +1,7 @@
 import Modal from "react-modal"
 import FilterByDate from "../forms/FilterByDate";
 
-const ModalFilterByDate = ({ modal, openCloseModal }) => {
+const ModalFilterByDate = ({ modal, closeModal }) => {
     return (
         <Modal
             style={{
@@ -30,17 +30,17 @@ const ModalFilterByDate = ({ modal, openCloseModal }) => {
             }}
             ariaHideApp={false}
             isOpen={modal.filterByDate}
-            onRequestClose={openCloseModal}
+            onRequestClose={closeModal}
             className=""
             contentLabel="Modal Filter By Date"
         >
             <div className='row'>
                 <div className='col d-flex justify-content-between '>
                     <h2 className="text-white">Filter By Date</h2>
-                    <button className='btn btn-danger' name="filterByDate" onClick={openCloseModal}>x</button>
+                    <button className='btn btn-danger' name="filterByDate" onClick={closeModal}>x</button>
                 </div>
             </div>
-            <FilterByDate />
+            <FilterByDate closeModal={closeModal} />
         </Modal >
     )
 }

@@ -10,7 +10,7 @@ import { UserFilteredContext } from '../../contexts/user-filtered-context';
 import searchPlayerMatches from '../../services/searchPlayerMatches';
 import { PlayersContext } from '../../contexts/players-context';
 
-const FilterByDate = () => {
+const FilterByDate = ({ closeModal }) => {
     const navigate = useNavigate()
     const { setMatches } = useContext(MatchesContext)
     const { setUserFiltered } = useContext(UserFilteredContext)
@@ -41,6 +41,7 @@ const FilterByDate = () => {
                     });
                     setUserFiltered(result2.data)
                     setMatches(result.data)
+                    closeModal()
                     navigate('/dashboard');
                 } else {
                     Swal.fire({
@@ -73,11 +74,9 @@ const FilterByDate = () => {
                     >
                         {players.map(player => (
                             player.role === 'PLAYER' ?
-                                <>
-                                    <option key={player.id} value={player.email}>
-                                        {player.email}
-                                    </option>
-                                </>
+                                <option key={player.id} value={player.email}>
+                                    {player.email}
+                                </option>
                                 : null
                         ))}
                     </Field>

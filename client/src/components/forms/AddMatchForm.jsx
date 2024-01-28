@@ -8,7 +8,7 @@ import { MatchesContext } from "../../contexts/matches-context.jsx";
 import { useContext } from "react";
 import formatDate from "../../helpers/formateDate.js";
 
-const AddMatchForm = () => {
+const AddMatchForm = ({ closeModal }) => {
     const navigate = useNavigate()
     const { setMatches } = useContext(MatchesContext)
 
@@ -47,6 +47,7 @@ const AddMatchForm = () => {
                     const response = await getAllMatches({ token })
                     setMatches(response.data)
                     resetForm();
+                    closeModal()
                     navigate('/dashboard')
                     return
                 } else {

@@ -9,14 +9,15 @@ import ModalFilterByDate from './modals/ModalFilterByDate';
 const AdminConsultantActions = () => {
     const { userData } = useContext(UserContext)
 
-
-    const [modal, setIsOpen] = useState({
+    const initialState = {
         addUser: false,
         addMatch: false,
         filterByDate: false
-    })
+    }
 
-    const openCloseModal = (e) => {
+    const [modal, setIsOpen] = useState(initialState)
+
+    const openModal = (e) => {
         const name = e.target.name
         setIsOpen({
             ...modal,
@@ -24,6 +25,9 @@ const AdminConsultantActions = () => {
         })
     }
 
+    const closeModal = () => {
+        setIsOpen(initialState)
+    }
     return (
         <>
 
@@ -31,26 +35,26 @@ const AdminConsultantActions = () => {
             {userData.role === 'ADMIN' ? (
                 <>
                     <li className="nav-item m-2">
-                        <button className="btn btn-primary" name="addUser" onClick={(e) => openCloseModal(e)}>
+                        <button className="btn btn-primary" name="addUser" onClick={(e) => openModal(e)}>
                             Add User
                         </button>
                     </li>
                     <li className="nav-item m-2">
-                        <button className="btn btn-primary" name="addMatch" onClick={(e) => openCloseModal(e)}>
+                        <button className="btn btn-primary" name="addMatch" onClick={(e) => openModal(e)}>
                             Add Match
                         </button>
                     </li>
                     <li className="nav-item m-2">
-                        <button className="btn btn-primary" name="filterByDate" onClick={(e) => openCloseModal(e)}>
+                        <button className="btn btn-primary" name="filterByDate" onClick={(e) => openModal(e)}>
                             Filter
                             By Date
                         </button>
                     </li>
                 </>
             ) : null}
-            <ModalFilterByDate modal={modal} openCloseModal={openCloseModal} />
-            <ModalAddUSer modal={modal} openCloseModal={openCloseModal} />
-            <ModalAddMatch modal={modal} openCloseModal={openCloseModal} />
+            <ModalFilterByDate modal={modal} closeModal={closeModal} />
+            <ModalAddUSer modal={modal} closeModal={closeModal} />
+            <ModalAddMatch modal={modal} closeModal={closeModal} />
         </>
     )
 };

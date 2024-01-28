@@ -11,12 +11,9 @@ import { UserContext } from "../../contexts/user-context";
 import { MatchesContext } from "../../contexts/matches-context";
 import SyncLoader from "react-spinners/SyncLoader";
 
-
-
 const Dashboard = () => {
     const token = sessionStorage.getItem('session')
     const navigate = useNavigate()
-
     const { loading, setLoading } = useContext(LoadingContext)
     const { userData, setUserData } = useContext(UserContext)
     const { matches, setMatches } = useContext(MatchesContext)
