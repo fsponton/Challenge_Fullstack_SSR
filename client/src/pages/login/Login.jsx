@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { loginSchema } from '../../utils/_yupSchemas/loginSchema.js';
-import loginUser from '../../services/login.js';
+import login from '../../services/login.js';
 import Swal from 'sweetalert2';
 import { useContext } from 'react';
 import { LoadingContext } from '../../contexts/loading-context.jsx';
@@ -28,7 +28,7 @@ const LoginForm = () => {
                                         email: values.email,
                                         password: values.password,
                                     }
-                                    const result = await loginUser(form)
+                                    const result = await login(form)
                                     if (result.data.status === "Success") {
                                         Swal.fire({
                                             icon: 'success',
@@ -54,19 +54,13 @@ const LoginForm = () => {
                                         <Field className="form-control" id="email" name="email" />
                                         <ErrorMessage name="email" component="div" className="text-danger" />
                                     </div>
-
                                     <div className="form-outline mb-4">
                                         <label htmlFor="password" className="form-label">Password:</label>
                                         <Field className="form-control" id="password" name="password" type="password" />
                                         <ErrorMessage name="password" component="div" className="text-danger" />
                                     </div>
-
-
-
-                                    <button className="btn btn-success btn-block  w-100" type="submit"  >Iniciar sesion</button>
-
-                                    <div className="mt-4  d-flex justify-content-center   ">
-
+                                    <button className="btn btn-success btn-block mt-4 w-100" type="submit">Sign In</button>
+                                    <div className="mt-4  d-flex justify-content-center">
                                     </div>
                                 </Form>
                             </Formik>

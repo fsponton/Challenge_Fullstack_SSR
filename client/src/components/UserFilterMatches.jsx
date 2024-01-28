@@ -47,12 +47,10 @@ const UserFilterMatches = () => {
         >
             <Form>
                 <label className="me-2">
-                    Start Date:
                     <Field className="form-control" type="date" name="startDate" />
                     <ErrorMessage name="startDate" component="div" className="text-danger" />
                 </label>
                 <label className="me-2">
-                    End Date:
                     <Field className="form-control" type="date" name="endDate" />
                     <ErrorMessage name="endDate" component="div" className="text-danger" />
                 </label>

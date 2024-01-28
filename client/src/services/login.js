@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default async function loginUser(form) {
+export default async function login(form) {
     try {
         const response = await axios({
             headers: {

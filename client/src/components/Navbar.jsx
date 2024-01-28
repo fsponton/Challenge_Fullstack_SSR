@@ -24,37 +24,37 @@ const Navbar = ({ userData }) => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <span className="nav-link m-1" style={{ backgroundColor: '#fdfd96', color: 'black' }}>Total Matches: {matches.length}</span>
+                            <span className="nav-link m-2" style={{ backgroundColor: '#000', color: '#fff' }}>User ID: {userData.id}</span>
+                        </li>
+                        <li className="nav-item">
+                            <span className="nav-link m-2" style={{ backgroundColor: '#000', color: '#fff' }}>Email: {userData.email}</span>
+                        </li>
+                        <li className="nav-item">
+                            <span className="nav-link m-2" style={{ backgroundColor: '#000', color: '#fff' }}>Role: {userData.role}</span>
+                        </li>
+                        <li className="nav-item">
+                            <span className="nav-link m-2" style={{ backgroundColor: '#fdfd96', color: 'black' }}>Total: {matches.length}</span>
                         </li>
                         <>
                             <li className="nav-item">
-                                <span className="nav-link m-1" style={{ backgroundColor: '#fdfd96', color: 'black' }}>Matches Win: {
+                                <span className="nav-link m-2" style={{ backgroundColor: '#77dd77', color: 'black' }}>Wins: {
                                     !userFiltered ?
                                         winMatches(matches, userData.id)
                                         : winMatches(matches, userFiltered.userID)
                                 }</span>
                             </li>
                             <li className="nav-item">
-                                <span className="nav-link m-1" style={{ backgroundColor: '#fdfd96', color: 'black' }}>Matches Loss: {
+                                <span className="nav-link m-2" style={{ backgroundColor: '#ff6961', color: 'black' }}>Lost: {
                                     !userFiltered ?
                                         lossMatches(matches, userData.id)
                                         : lossMatches(matches, userFiltered.userID)
                                 }</span>
                             </li>
                         </>
-                        <li className="nav-item">
-                            <span className="nav-link m-1" style={{ backgroundColor: '#000', color: '#fff' }}>User ID: {userData.id}</span>
-                        </li>
-                        <li className="nav-item">
-                            <span className="nav-link m-1" style={{ backgroundColor: '#000', color: '#fff' }}>Email: {userData.email}</span>
-                        </li>
-                        <li className="nav-item">
-                            <span className="nav-link m-1" style={{ backgroundColor: '#000', color: '#fff' }}>Role: {userData.role}</span>
-                        </li>
                         {userData.role === 'PLAYER' ? < UserFilterMatches /> : null}
                         {userData.role === 'ADMIN' || userData.role === 'CONSULTANT' ? < AdminConsultantActions /> : null}
                         <li className="nav-item m-2">
-                            <button className="btn btn-danger " onClick={logout}>Logout</button>
+                            <button className="btn" style={{ background: "#ff6961" }} onClick={logout}>Logout</button>
                         </li>
                     </ul>
                 </div>

@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default async function getMatches({ email, token }) {
+export default async function getMatchesByUser({ email, token }) {
     try {
         const response = await axios({
             headers: {

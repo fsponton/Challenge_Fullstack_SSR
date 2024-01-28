@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export default async function searchPlayerMatches({ form, token }) {
+export default async function getByMatchesDate({ form, token }) {
     try {
         const response = await axios({
             headers: {
@@ -9,7 +9,8 @@ export default async function searchPlayerMatches({ form, token }) {
                 Authorization: `Bearer ${token}`
             },
             method: 'get',
-            url: `http://localhost:3000/matches/${form.email}`,
+            url: `http://localhost:3000/matches/bydateanduser?startDate=${form.startDate}&endDate=${form.endDate}&emailUser=${form.email}`,
+
         })
         return response.data
     } catch (error) {

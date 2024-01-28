@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import { LoadingContext } from "../../contexts/loading-context";
 import { useNavigate } from "react-router";
 import jwt_decode from "jwt-decode"
-import { getMatches, getAllMatches, getAllPlayers } from "../../services/index.js"
+import { getMatchesByUser, getAllMatches, getAllPlayers } from "../../services/index.js"
 import Swal from "sweetalert2";
 import { PlayersContext } from "../../contexts/players-context.jsx";
 import { UserContext } from "../../contexts/user-context";
@@ -33,7 +33,7 @@ const Dashboard = () => {
                 const players = await getAllPlayers({ token })
                 setPlayers(players)
                 if (userData.role === 'PLAYER') {
-                    const result = await getMatches({ email: userData.email, token })
+                    const result = await getMatchesByUser({ email: userData.email, token })
                     setMatches(result.data.wins.concat(result.data.loss))
                     return
                 }

@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { searchSchema } from '../../utils/_yupSchemas/searchSchema';
 import Swal from 'sweetalert2';
-import searchPlayerMatches from '../../services/searchPlayerMatches';
+import getMatchesByUser from '../../services/getMatchesByUser';
 import { useNavigate } from 'react-router';
 import { MatchesContext } from '../../contexts/matches-context';
 import { useContext } from 'react';
@@ -18,12 +18,9 @@ const SearchBar = () => {
                 email: '',
             }}
             validationSchema={searchSchema}
-            onSubmit={async (values) => {
-                const form = {
-                    email: values.email
-                }
+            onSubmit={async (values, { resetForm }) => {
                 const token = sessionStorage.getItem('session')
-                const result = await searchPlayerMatches({ form, token })
+                const result = await getMatchesByUser({ email: values.email, token })
                 if (result.status === "Success") {
                     Swal.fire({
                         icon: 'success',
@@ -32,6 +29,7 @@ const SearchBar = () => {
                     });
                     setUserFiltered(result.data)
                     setMatches(result.data.wins.concat(result.data.loss))
+                    resetForm()
                     navigate('/dashboard');
                 } else {
                     Swal.fire({
@@ -42,8 +40,8 @@ const SearchBar = () => {
                 }
             }}
         >
-            <Form className="row p-2" style={{ backgroundColor: "black", color: "#fff" }}>
-                <div className='col-8 d-flex justify-content-center align-items-center'>
+            <Form className="row" >
+                <div className='col-8 d-flex align-items-center'>
                     <Field
                         className='form-control'
                         type="text"
@@ -52,13 +50,13 @@ const SearchBar = () => {
                     />
                     <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
                 </div>
-                <div className="col-3 d-flex justify-content-center align-items-center">
+                <div className="col-4 d-flex justify-content-start align-items-center">
                     <button className="btn btn-primary " type="submit">
                         Search
                     </button>
                 </div>
             </Form>
-        </Formik>
+        </Formik >
     );
 };
 

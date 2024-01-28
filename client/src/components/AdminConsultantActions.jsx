@@ -1,36 +1,18 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../contexts/user-context';
 import SearchBar from './forms/SearchBar';
 import ModalAddUSer from './modals/ModalAddUser';
 import ModalAddMatch from './modals/ModalAddMatch';
 import ModalFilterByDate from './modals/ModalFilterByDate';
-
+import { useModal } from '../hooks/useModal';
 
 const AdminConsultantActions = () => {
     const { userData } = useContext(UserContext)
+    const { modal, openModal, closeModal } = useModal()
 
-    const initialState = {
-        addUser: false,
-        addMatch: false,
-        filterByDate: false
-    }
 
-    const [modal, setIsOpen] = useState(initialState)
-
-    const openModal = (e) => {
-        const name = e.target.name
-        setIsOpen({
-            ...modal,
-            [name]: !modal[name]
-        })
-    }
-
-    const closeModal = () => {
-        setIsOpen(initialState)
-    }
     return (
         <>
-
             <SearchBar />
             {userData.role === 'ADMIN' ? (
                 <>

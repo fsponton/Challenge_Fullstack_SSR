@@ -4,10 +4,11 @@ import { filterMatchesSchema } from '../../utils/_yupSchemas/filterMatchesSchema
 import { useNavigate } from 'react-router';
 import { MatchesContext } from '../../contexts/matches-context';
 import { useContext } from 'react';
-import searchByDate from '../../services/searchByDate';
+import getMatchesByDate from '../../services/getMatchesByDate';
 import formatDate from '../../helpers/formateDate';
 import { UserFilteredContext } from '../../contexts/user-filtered-context';
-import searchPlayerMatches from '../../services/searchPlayerMatches';
+// import searchPlayerMatches from '../../services/searchPlayerMatches';
+import getMatchesByUser from '../../services/getMatchesByUser';
 import { PlayersContext } from '../../contexts/players-context';
 
 const FilterByDate = ({ closeModal }) => {
@@ -31,8 +32,8 @@ const FilterByDate = ({ closeModal }) => {
                     endDate: values.endDate
                 }
                 const token = sessionStorage.getItem('session')
-                const result = await searchByDate({ form, token })
-                const result2 = await searchPlayerMatches({ form, token })
+                const result = await getMatchesByDate({ form, token })
+                const result2 = await getMatchesByUser({ email: form.email, token })
                 if (result.status === "Success") {
                     Swal.fire({
                         icon: 'success',
