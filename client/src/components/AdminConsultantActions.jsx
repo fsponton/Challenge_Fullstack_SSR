@@ -1,24 +1,30 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../contexts/user-context';
-import AddMatchForm from './AddMatchForm';
-import AddUserForm from './AddUserForm';
+// import AddMatchForm from './AddMatchForm';
+// import AddUserForm from './AddUserForm';
 import SearchBar from './SearchBar';
 import ConsultantFilterMatches from './ConsultantFilterMatches';
+import ModalAddUSer from './modalAddUser';
+import ModalAddMatch from './ModalAddMatch';
+
+
 
 const AdminConsultantActions = () => {
     const { userData } = useContext(UserContext)
-    const [showAddMatchForm, setShowAddMatchForm] = useState(false);
-    const [showAddUserForm, setShowAddUserForm] = useState(false)
 
-    const handlerAddUser = () => {
-        setShowAddUserForm(!showAddUserForm)
-        setShowAddMatchForm(false)
-    };
 
-    const handlerAddMatch = () => {
-        setShowAddMatchForm(!showAddMatchForm)
-        setShowAddUserForm(false)
-    };
+    const [modal, setIsOpen] = useState({
+        addUser: false,
+        addMatch: false
+    })
+
+    const openCloseModal = (e) => {
+        const name = e.target.name
+        setIsOpen({
+            ...modal,
+            [name]: !modal[name]
+        })
+    }
 
     return (
         <>
@@ -27,19 +33,19 @@ const AdminConsultantActions = () => {
             {userData.role === 'ADMIN' ? (
                 <>
                     <li className="nav-item m-2">
-                        <button className="btn btn-primary " onClick={handlerAddUser}>
+                        <button className="btn btn-primary" name="addUser" onClick={(e) => openCloseModal(e)}>
                             Add User
                         </button>
                     </li>
-                    {showAddUserForm && <AddUserForm />}
                     <li className="nav-item m-2">
-                        <button className="btn btn-primary" onClick={handlerAddMatch}>
+                        <button className="btn btn-primary" name="addMatch" onClick={(e) => openCloseModal(e)}>
                             Add Match
                         </button>
                     </li>
-                    {showAddMatchForm && <AddMatchForm />}
                 </>
             ) : null}
+            <ModalAddUSer modal={modal} openCloseModal={openCloseModal} />
+            <ModalAddMatch modal={modal} openCloseModal={openCloseModal} />
         </>
     )
 };

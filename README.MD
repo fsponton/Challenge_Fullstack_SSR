@@ -119,4 +119,4 @@ Ingresar a la web app mediante el link "http://localhost:8080"
 
 ### Paso 11
 Ya podemos ingresar con cualquier tipo de perfil, filtrar, cargar usuarios y partidos
-Tambien podemos ver swagger con el link "http://localhost:3000/api_docs"
+Tambien podemos ver swagger con el link "http://localhost:4000/api_docs"

@@ -1,24 +1,25 @@
 import { useEffect, useContext } from "react";
+import TableMatches from "../../components/TableMatches";
+import Navbar from "../../components/Navbar";
+import { LoadingContext } from "../../contexts/loading-context";
 import { useNavigate } from "react-router";
 import jwt_decode from "jwt-decode"
 import { getMatches, getAllMatches, getAllPlayers } from "../../services/index.js"
-import TableMatches from "../../components/TableMatches";
-import Navbar from "../../components/Navbar";
-import { UserContext } from "../../contexts/user-context";
-import { LoadingContext } from "../../contexts/loading-context";
-import { MatchesContext } from "../../contexts/matches-context";
-import { PlayersContext } from "../../contexts/players-context.jsx";
 import Swal from "sweetalert2";
+import { PlayersContext } from "../../contexts/players-context.jsx";
+import { UserContext } from "../../contexts/user-context";
+import { MatchesContext } from "../../contexts/matches-context";
 import SyncLoader from "react-spinners/SyncLoader";
 
 
 
 const Dashboard = () => {
-    const navigate = useNavigate()
     const token = sessionStorage.getItem('session')
+    const navigate = useNavigate()
+
+    const { loading, setLoading } = useContext(LoadingContext)
     const { userData, setUserData } = useContext(UserContext)
     const { matches, setMatches } = useContext(MatchesContext)
-    const { loading, setLoading } = useContext(LoadingContext)
     const { setPlayers } = useContext(PlayersContext)
 
 
@@ -58,6 +59,8 @@ const Dashboard = () => {
         }
         fetchData()
     }, [token, setLoading])
+
+
 
 
     useEffect(() => {
