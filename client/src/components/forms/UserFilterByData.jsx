@@ -1,14 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { userFilterMatchesSchema } from '../utils/_yupSchemas/userFilterMatchesSchema';
+import { userFilterMatchesSchema } from '../../utils/_yupSchemas/userFilterMatchesSchema';
 import Swal from 'sweetalert2';
-import userSearchByDate from '../services/userSearchByDate';
+import userSearchByDate from '../../services/userSearchByDate';
 import { useNavigate } from 'react-router';
-import { MatchesContext } from '../contexts/matches-context';
+import { MatchesContext } from '../../contexts/matches-context';
 import { useContext } from 'react';
-import { UserContext } from '../contexts/user-context';
-import formatDate from '../helpers/formateDate';
+import { UserContext } from '../../contexts/user-context';
+import formatDate from '../../helpers/formateDate';
 
-const UserFilterMatches = () => {
+const UserFilterByData = () => {
     const navigate = useNavigate()
     const { setMatches } = useContext(MatchesContext)
     const { userData } = useContext(UserContext)
@@ -45,16 +45,18 @@ const UserFilterMatches = () => {
                 }
             }}
         >
-            <Form>
-                <label className="me-2">
-                    <Field className="form-control" type="date" name="startDate" />
-                    <ErrorMessage name="startDate" component="div" className="text-danger" />
-                </label>
-                <label className="me-2">
-                    <Field className="form-control" type="date" name="endDate" />
-                    <ErrorMessage name="endDate" component="div" className="text-danger" />
-                </label>
-                <button className="btn btn-primary" type="submit">
+            <Form className="" style={{ backgroundColor: "black", color: "#fff", padding: '5px' }}>
+                <div className='row d-flex justify-content-between mt-4'>
+                    <label className="col-6">
+                        <Field className="form-control" type="date" name="startDate" />
+                        <ErrorMessage name="startDate" component="div" className="text-danger" />
+                    </label>
+                    <label className="col-6">
+                        <Field className="form-control" type="date" name="endDate" />
+                        <ErrorMessage name="endDate" component="div" className="text-danger" />
+                    </label>
+                </div>
+                <button className="btn btn-success w-100 mt-4" type="submit">
                     Search
                 </button>
             </Form>
@@ -62,4 +64,4 @@ const UserFilterMatches = () => {
     );
 };
 
-export default UserFilterMatches;
+export default UserFilterByData;

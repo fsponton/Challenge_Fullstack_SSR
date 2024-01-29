@@ -21,10 +21,11 @@ const SearchBar = () => {
             onSubmit={async (values, { resetForm }) => {
                 const token = sessionStorage.getItem('session')
                 const result = await getMatchesByUser({ email: values.email, token })
+                console.log(result)
                 if (result.status === "Success") {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Match added successfully',
+                        title: 'Searched successfully',
                         text: `${result.message}`
                     });
                     setUserFiltered(result.data)

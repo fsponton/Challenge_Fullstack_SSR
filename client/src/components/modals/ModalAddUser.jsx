@@ -37,7 +37,7 @@ const ModalAddUSer = ({ modal, closeModal }) => {
             <div className='row'>
                 <div className='col d-flex justify-content-between '>
                     <h2 className="text-white">Add User</h2>
-                    <button className='btn btn-danger' name="addUser" onClick={closeModal}>x</button>
+                    <button className='btn btn-danger m-1' name="addUser" onClick={closeModal}>x</button>
                 </div>
             </div>
             <AddUserForm closeModal={closeModal} />

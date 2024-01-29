@@ -92,8 +92,12 @@ USUARIOS PLAYER
 - Filtrar por fecha
 
 ### Paso 9
-Abrir Swagger ingresando a: "http://localhost:3000/api_docs"
-Todas las acciones nos van a pedir el token, asi que una vez logueado y devuelto el token, podemos ingresarlo arriba en la autorizacion y dejarlo para las siguientes request's
+Abrir swagger: moverse a /api_swagger/ y ejecutar el comando: npm run dev.
+
+La direccion de la documentacion es:  "http://localhost:4000/api_docs"
+
+Todas las acciones nos van a pedir el token, una vez logueado y devuelto el token, podemos copiarlo, agregarlo dejarlo seteado arriba en la autorizacion para las siguientes request's
+
 
 ### Paso 10
 Arrancar con Docker

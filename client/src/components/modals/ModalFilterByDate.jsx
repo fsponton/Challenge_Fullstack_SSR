@@ -1,7 +1,12 @@
 import Modal from "react-modal"
 import FilterByDate from "../forms/FilterByDate";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user-context";
+import UserFilterByData from "../forms/UserFilterByData";
 
 const ModalFilterByDate = ({ modal, closeModal }) => {
+    const { userData } = useContext(UserContext)
+
     return (
         <Modal
             style={{
@@ -37,10 +42,14 @@ const ModalFilterByDate = ({ modal, closeModal }) => {
             <div className='row'>
                 <div className='col d-flex justify-content-between '>
                     <h2 className="text-white">Filter By Date</h2>
-                    <button className='btn btn-danger' name="filterByDate" onClick={closeModal}>x</button>
+                    <button className='btn btn-danger m-1' name="filterByDate" onClick={closeModal}>x</button>
                 </div>
             </div>
-            <FilterByDate closeModal={closeModal} />
+            {
+                userData.role === 'PLAYER' ?
+                    <UserFilterByData closeModal={closeModal} />
+                    : <FilterByDate closeModal={closeModal} />
+            }
         </Modal >
     )
 }
