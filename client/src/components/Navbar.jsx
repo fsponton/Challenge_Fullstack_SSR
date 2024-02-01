@@ -53,7 +53,10 @@ const Navbar = ({ userData }) => {
                                 }</span>
                             </li>
                         </>
-                        {userData.role === 'ADMIN' || userData.role === 'CONSULTANT' ? < AdminConsultantActions /> : null}
+                        {userData.role === 'ADMIN' || userData.role === 'CONSULTANT' ?
+                            < AdminConsultantActions />
+                            : null
+                        }
                         <li className="nav-item m-2">
                             <button className="btn btn-primary" name="filterByDate" onClick={(e) => openModal(e)}>
                                 Filter

@@ -7,7 +7,6 @@ import { useContext } from 'react';
 import getMatchesByDate from '../../services/getMatchesByDate';
 import formatDate from '../../helpers/formateDate';
 import { UserFilteredContext } from '../../contexts/user-filtered-context';
-// import searchPlayerMatches from '../../services/searchPlayerMatches';
 import getMatchesByUser from '../../services/getMatchesByUser';
 import { PlayersContext } from '../../contexts/players-context';
 

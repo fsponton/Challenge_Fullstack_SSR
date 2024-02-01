@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../contexts/user-context';
 import formatDate from '../../helpers/formateDate';
 
-const UserFilterByData = () => {
+const UserFilterByData = ({ closeModal }) => {
     const navigate = useNavigate()
     const { setMatches } = useContext(MatchesContext)
     const { userData } = useContext(UserContext)
@@ -35,6 +35,7 @@ const UserFilterByData = () => {
                         text: `${result.message}`
                     });
                     setMatches(result.data)
+                    closeModal()
                     navigate('/dashboard');
                 } else {
                     Swal.fire({
