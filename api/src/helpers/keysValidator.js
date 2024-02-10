@@ -1,25 +1,19 @@
 import { KeysError } from "../utils/errors/index.js"
 
-
 const keysValidator = (keysFromRequest, originalKeys) => {
 
     const stringKeys = keysFromRequest.join(", ")
 
-    // check keys quantity keys
-    if (keysFromRequest.length !== originalKeys.length) { throw new KeysError(`The keys provided: ${stringKeys} in req.body are not valid. Please Check`, 400) }
+    const sortedKeysFromRequest = keysFromRequest.sort()
+    const sortedOriginalKeys = originalKeys.sort()
 
-    const sortedArray1 = keysFromRequest.sort()
-    const sortedArray2 = originalKeys.sort()
-
-    // compare values of arrays
-    for (let i = 0; i < sortedArray1.length; i++) {
-        if (sortedArray1[i] !== sortedArray2[i]) {
-            throw new KeysError(`The keys provided: ${stringKeys} in req.body are not valid. Please Check `, 400)
+    // Compare keys from request are equals of original keys 
+    for (let i = 0; i < sortedKeysFromRequest.length; i++) {
+        if (sortedKeysFromRequest[i] !== sortedOriginalKeys[i]) {
+            throw new KeysError(`Mistake key: ${sortedOriginalKeys[i]} on req.body. The keys provided are: ${stringKeys}. Please Check `, 400)
         }
     }
-
     return
-
 }
 
 export default keysValidator;
